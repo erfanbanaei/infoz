@@ -1,0 +1,25 @@
+name: infoz
+description: 'A new Flutter project.'
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.5.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  process_run: ^1.2.0
+  flex_color_scheme: ^7.3.1
+  google_fonts: ^6.2.1
+  get: ^4.6.6
+  window_manager: ^0.4.2
+  floating_snackbar: ^1.0.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
