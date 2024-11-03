@@ -33,10 +33,16 @@ jobs:
         run: flutter build linux
 
       - name: List build directory
-        run: ls -R build/linux
+        run: ls -R build
 
-      - name: Compress to tar.gz
-        run: tar -czvf build/linux-release.tar.gz -C build/linux/release/bundle .
+      - name: Compress to tar.gz if exists
+        run: |
+          if [ -d "build/linux/release/bundle" ]; then
+            tar -czvf build/linux-release.tar.gz -C build/linux/release/bundle .
+          else
+            echo "Bundle directory not found, check the build output."
+            exit 1
+          fi
 
       - name: Create GitHub Release
         id: create_release
