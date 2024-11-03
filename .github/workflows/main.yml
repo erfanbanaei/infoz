@@ -32,15 +32,19 @@ jobs:
       - name: Build Linux app
         run: flutter build linux
 
-      - name: List build directory
-        run: ls -R build
+      - name: List build directory contents
+        run: |
+          echo "Listing build directory contents:"
+          ls -R build
 
       - name: Compress to tar.gz if exists
         run: |
-          if [ -d "build/linux/release/bundle" ]; then
-            tar -czvf build/linux-release.tar.gz -C build/linux/release/bundle .
+          if [ -d "build/linux/x64/release/bundle" ]; then
+            tar -czvf build/linux-release.tar.gz -C build/linux/x64/release/bundle .
+          elif [ -d "build/linux/release" ]; then
+            tar -czvf build/linux-release.tar.gz -C build/linux/release .
           else
-            echo "Bundle directory not found, check the build output."
+            echo "No valid output directory found for compression."
             exit 1
           fi
 
