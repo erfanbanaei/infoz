@@ -32,8 +32,11 @@ jobs:
       - name: Build Linux app
         run: flutter build linux
 
+      - name: List build directory
+        run: ls -R build/linux
+
       - name: Compress to tar.gz
-        run: tar -czvf build/linux-release.tar.gz -C build/linux/release .
+        run: tar -czvf build/linux-release.tar.gz -C build/linux/release/bundle .
 
       - name: Create GitHub Release
         id: create_release
